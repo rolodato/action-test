@@ -10,10 +10,10 @@ jobs:
         distribution: adopt
         java-version: '11'
 
-    - name: echo $PATH
-      run: echo $PATH
+    - name: Run mvn
+      run: mvn --version
 
-    - name: echo $PATH with env set
+    - name: Run mvn with env set
       env:
         FOO: bar
-      run: echo $PATH
+      run: mvn --version
