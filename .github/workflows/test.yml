@@ -16,6 +16,8 @@ jobs:
       run: mvn --version
 
     - name: "Run FOSSA Scan"
+      env:
+        FOO: bar
       uses: fossas/fossa-action@feat/debug
       with:
         api-key: ${{ secrets.fossaApiKey }}
