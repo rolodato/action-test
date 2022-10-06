@@ -13,6 +13,11 @@ jobs:
     - name: Run mvn
       run: mvn --version
 
+    - name: Set up project information
+      run: |
+        export REF=${{ github.event.client_payload.event.ref }}
+        echo "BRANCH_NAME=$(echo "${REF#refs/heads/}")" >> $GITHUB_ENV
+
     - name: Run mvn with env set
       env:
         FOO: bar
