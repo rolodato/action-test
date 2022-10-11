@@ -29,6 +29,7 @@ jobs:
       uses: fossas/fossa-action@feat/debug
       with:
         api-key: ${{ secrets.fossaApiKey }}
+        branch: my-branch-name
         debug: true
 
 
