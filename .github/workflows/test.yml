@@ -1,0 +1,42 @@
+name: My tests
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-java@v3
+      with:
+        distribution: adopt
+        java-version: '11'
+
+    - name: Show environment
+      run: env
+
+    - name: Show where mvn is
+      run: command -v mvn
+
+    - name: Set up project information
+      run: |
+        export REF=${{ github.event.client_payload.event.ref }}
+        echo "BRANCH_NAME=$(echo "${REF#refs/heads/}")" >> $GITHUB_ENV
+
+    - name: Run mvn again
+      run: mvn --version
+
+    - name: "Run FOSSA Scan"
+      env:
+        FOO: bar
+      uses: fossas/fossa-action@feat/debug
+      with:
+        api-key: ${{ secrets.fossaApiKey }}
+        branch: my-branch-name
+        debug: true
+
+
+    - name: Run mvn with env set
+      env:
+        FOO: bar
+      run: mvn --version
