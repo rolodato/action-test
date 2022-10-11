@@ -12,6 +12,9 @@ jobs:
         distribution: adopt
         java-version: '11'
 
+    - name: Show environment
+      run: env
+
     - name: Run mvn
       run: mvn --version
 
