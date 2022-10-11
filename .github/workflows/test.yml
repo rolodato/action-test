@@ -4,8 +4,6 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: summerwind/actions-runner:latest
     steps:
     - uses: actions/checkout@v3
 
