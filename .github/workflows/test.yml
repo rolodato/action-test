@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   test:
-    runs-on: summerwind/actions-runner:v2.278.0-ubuntu-20.04
+    runs-on: summerwind/actions-runner:latest
     steps:
     - uses: actions/checkout@v3
 
